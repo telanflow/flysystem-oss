@@ -9,7 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Iidestiny\Flysystem\Oss\Traits;
+namespace Telanflow\Flysystem\Oss\Traits;
+
+use Exception;
 
 trait SignatureTrait
 {
@@ -20,7 +22,7 @@ trait SignatureTrait
      *
      * @return string
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function gmt_iso8601($time)
     {

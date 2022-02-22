@@ -1,6 +1,6 @@
 <?php
 $header = <<<EOF
-This file is part of the iidestiny/flysystem-oss.
+This file is part of the telanflow/flysystem-oss.
 
 (c) iidestiny <iidestiny@vip.qq.com>
 

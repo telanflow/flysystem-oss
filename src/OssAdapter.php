@@ -9,10 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Iidestiny\Flysystem\Oss;
+namespace Telanflow\Flysystem\Oss;
 
 use Carbon\Carbon;
-use Iidestiny\Flysystem\Oss\Traits\SignatureTrait;
+use Telanflow\Flysystem\Oss\Traits\SignatureTrait;
 use League\Flysystem\AdapterInterface;
 use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\Adapter\Polyfill\NotSupportingVisibilityTrait;

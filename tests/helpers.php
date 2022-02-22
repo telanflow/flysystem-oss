@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Iidestiny\Flysystem\Oss;
+namespace Telanflow\Flysystem\Oss;
 
 function file_get_contents($path)
 {

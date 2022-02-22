@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Iidestiny\Flysystem\Oss\Plugins;
+namespace Telanflow\Flysystem\Oss\Plugins;
 
 use League\Flysystem\Plugin\AbstractPlugin;
 use OSS\OssClient;

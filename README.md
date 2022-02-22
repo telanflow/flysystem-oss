@@ -23,20 +23,20 @@
 
 ## 扩展包要求
 
--   PHP >= 7.0
+-   PHP >= 8.0.2
 
 ## 安装命令
 
 ```shell
-$ composer require "iidestiny/flysystem-oss" -vvv
+$ composer require "telanflow/flysystem-oss" -vvv
 ```
 
 ## 使用
 
 ```php
 use League\Flysystem\Filesystem;
-use Iidestiny\Flysystem\Oss\OssAdapter;
-use Iidestiny\Flysystem\Oss\Plugins\FileUrl;
+use Telanflow\Flysystem\Oss\OssAdapter;
+use Telanflow\Flysystem\Oss\Plugins\FileUrl;
 
 $prefix = ''; // 前缀，非必填
 $accessKeyId = 'xxxxxx';
@@ -92,10 +92,10 @@ int $flysystem->getTimestamp('file.md');
 ## 插件扩展
 
 ```php
-use Iidestiny\Flysystem\Oss\Plugins\FileUrl;
-use Iidestiny\Flysystem\Oss\Plugins\SignUrl;
-use Iidestiny\Flysystem\Oss\Plugins\TemporaryUrl;
-use Iidestiny\Flysystem\Oss\Plugins\SetBucket;
+use Telanflow\Flysystem\Oss\Plugins\FileUrl;
+use Telanflow\Flysystem\Oss\Plugins\SignUrl;
+use Telanflow\Flysystem\Oss\Plugins\TemporaryUrl;
+use Telanflow\Flysystem\Oss\Plugins\SetBucket;
 
 // 获取 oss 资源访问链接
 $flysystem->addPlugin(new FileUrl());
@@ -131,7 +131,7 @@ $flysystem->bucket('test')->has('file.md');
 然后你将拥有完整的 oss 处理能力
 
 ```php
-use Iidestiny\Flysystem\Oss\Plugins\Kernel;
+use Telanflow\Flysystem\Oss\Plugins\Kernel;
 
 $flysystem->addPlugin(new Kernel());
 $kernel = $flysystem->kernel();
@@ -154,7 +154,7 @@ $kernel->putBucketReferer($bucket, $refererConfig);
 oss 直传有三种方式，当前扩展包使用的是最完整的 [服务端签名直传并设置上传回调](https://help.aliyun.com/document_detail/31927.html?spm=a2c4g.11186623.2.10.5602668eApjlz3#concept-qp2-g4y-5db) 方式，**扩展包只生成前端页面上传所需的签名参数**，前端上传实现可参考 [官方文档中的实例](https://help.aliyun.com/document_detail/31927.html?spm=a2c4g.11186623.2.10.5602668eApjlz3#concept-qp2-g4y-5db) 或自行搜索
 
 ```php
-use Iidestiny\Flysystem\Oss\Plugins\SignatureConfig;
+use Telanflow\Flysystem\Oss\Plugins\SignatureConfig;
 
 $flysystem->addPlugin(new SignatureConfig());
 
@@ -164,7 +164,7 @@ $flysystem->addPlugin(new SignatureConfig());
  * 3. 回调自定义参数，oss 回传应用服务器时会带上
  * 4. 当前直传配置链接有效期
  * 5. 文件大小限制
- * 6. 回调系统参数, 默认值: Iidestiny\Flysystem\Oss\OssAdapter::SYSTEM_FIELD
+ * 6. 回调系统参数, 默认值: Telanflow\Flysystem\Oss\OssAdapter::SYSTEM_FIELD
  */
 object $flysystem->signatureConfig($prefix = '/', $callBackUrl = '', $customData = [], $expire = 30, $maxSize = 1024 * 1024 * 2, $systemData = ['etag' => '${etag}', 'filename' => '${object}']);
 ```
@@ -178,7 +178,7 @@ object $flysystem->signatureConfig($prefix = '/', $callBackUrl = '', $customData
 - 以 apache 为例，修改 httpd.conf 在 DirectoryIndex index.php 这行下面增加「RewriteEngine On」「RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization},last]」
 
 ```php
-use Iidestiny\Flysystem\Oss\Plugins\Verify;
+use Telanflow\Flysystem\Oss\Plugins\Verify;
 
 $flysystem->addPlugin(new Verify());
 
